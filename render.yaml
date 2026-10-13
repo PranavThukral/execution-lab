@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: execution-lab
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /readyz
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: ENABLE_IMPORTED_DATASETS
+        value: "false"

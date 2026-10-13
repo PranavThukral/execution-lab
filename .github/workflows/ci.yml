@@ -1,0 +1,42 @@
+name: verify
+on:
+  push:
+  pull_request:
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: backend}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install uv
+      - run: uv sync --frozen --extra dev
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest
+  frontend:
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: frontend}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24.15'}
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test -- --run
+      - run: npm run build
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t execution-lab .
+      - run: docker run -d --name lab -p 8000:8000 execution-lab
+      - name: Check container readiness and simulation
+        run: |
+          for i in $(seq 1 30); do curl -fsS http://localhost:8000/readyz && break; sleep 1; done
+          curl -fsS http://localhost:8000/readyz
+          curl -fsS http://localhost:8000/ > /tmp/lab.html
+          curl -fsS -H 'Content-Type: application/json' -d '{}' http://localhost:8000/api/v1/simulations > /tmp/run.json
+          python -c 'import json; r=json.load(open("/tmp/run.json")); assert len(r["strategies"])==3; assert r["schema_version"]==3'

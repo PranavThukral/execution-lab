@@ -1,0 +1,9 @@
+services:
+  execution-lab:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: production
+      ENABLE_IMPORTED_DATASETS: "false"
+      PORT: "8000"

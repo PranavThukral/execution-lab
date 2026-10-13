@@ -1,0 +1,16 @@
+.git
+.env*
+**/.venv
+**/node_modules
+**/dist
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/*.egg-info
+**/*.pyc
+**/*.tsbuildinfo
+backend/data/local
+evidence
+docs/UI_DESIGN.md
+docs/VERIFICATION.md
+docs/DEMO_SCRIPT.md

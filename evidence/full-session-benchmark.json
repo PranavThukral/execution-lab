@@ -1,0 +1,12 @@
+{
+  "engine_version": "0.3.0",
+  "python": "3.14.7",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "bars": 2340,
+  "window_minutes": 390,
+  "iterations": 30,
+  "warmup_iterations": 1,
+  "p50_ms": 103.88105004676618,
+  "p95_ms": 119.8861000011675,
+  "scope": "Warm engine: profiles/hash/metrics included. Startup, network, serialization and UI excluded. Nearest-rank p95."
+}
