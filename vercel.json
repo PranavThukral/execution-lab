@@ -12,8 +12,7 @@
       "framework": "vite",
       "installCommand": "npm ci",
       "buildCommand": "npm run build",
-      "outputDirectory": "dist",
-      "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+      "outputDirectory": "dist"
     },
     "backend": {
       "root": "backend",
@@ -27,7 +26,10 @@
     { "source": "/readyz", "destination": { "service": "backend" } },
     { "source": "/docs", "destination": { "service": "backend" } },
     { "source": "/openapi.json", "destination": { "service": "backend" } },
-    { "source": "/:path*", "destination": { "service": "frontend" } }
+    { "source": "/assets/:path*", "destination": { "service": "frontend" } },
+    { "source": "/fonts/:path*", "destination": { "service": "frontend" } },
+    { "source": "/favicon.svg", "destination": { "service": "frontend" } },
+    { "source": "/:path*", "destination": { "service": "frontend", "path": "/index.html" } }
   ],
   "headers": [
     {
