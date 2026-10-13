@@ -1073,7 +1073,7 @@ export function App() {
                   (result?.request.participation_cap ?? inputs.cap) * 100
                 ).toFixed(0)}
                 % of each minute’s volume. Leftover shares stay unfilled and add
-                to the total cost. Importnat to note that spread, impact and
+                to the total cost. Important to note that spread, impact and
                 fees are estimates.
               </p>
             </div>
