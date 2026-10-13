@@ -375,7 +375,7 @@ export function App() {
                   one-minute prices and volume. It covers {sessions.length} US
                   market sessions, from {dayLabel(sessions[0])} to
                   {dayLabel(sessions.at(-1)!, true)}. The selected day tests the
-                  trading strategies on different circumsntances and prices.
+                  trading strategies on different circumstances and prices.
                 </>
               ) : (
                 <>
