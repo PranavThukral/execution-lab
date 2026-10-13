@@ -20,6 +20,7 @@
       "entrypoint": "app.main:app"
     }
   },
+  "redirects": [{ "source": "/", "destination": "/index.html", "permanent": false }],
   "rewrites": [
     { "source": "/api/:path*", "destination": { "service": "backend" } },
     { "source": "/healthz", "destination": { "service": "backend" } },
@@ -29,7 +30,7 @@
     { "source": "/assets/:path*", "destination": { "service": "frontend" } },
     { "source": "/fonts/:path*", "destination": { "service": "frontend" } },
     { "source": "/favicon.svg", "destination": { "service": "frontend" } },
-    { "source": "/:path*", "destination": { "service": "frontend", "path": "/index.html" } }
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
   ],
   "headers": [
     {
