@@ -2,6 +2,8 @@
 
 Compare how immediate execution, TWAP and forecast-volume VWAP fill the same stock order under different timing and liquidity conditions.
 
+[Live demo](https://execution-lab-three.vercel.app/)
+
 ## Technologies
 
 - **Frontend:** React, TypeScript, Vite, custom SVG charts, Inter and Krub.
